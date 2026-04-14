@@ -2,6 +2,10 @@ import '../styles/globals.css';
 import Head from 'next/head';
 
 import { Provider } from 'react-redux';
+import user from '../reducers/user';
+import tweets from '../reducers/tweets';
+import likeTweets from '../reducers/likeTweets';
+
 import { store } from '../store';
 import { configureStore } from '@reduxjs/toolkit';
 
@@ -10,7 +14,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import storage from 'redux-persist/lib/storage';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-const reducers = combineReducers({ reducernameTOCHANGE });
+const reducers = combineReducers({ user, tweets, likeTweets });
 const persistConfig = { key: 'hackathon2', storage };
 
 const store = configureStore({

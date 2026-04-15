@@ -14,8 +14,6 @@ function Login() {
 	const [ModalUp, setModalUp] = useState(false);
 	const [ModalIn, setModalIn] = useState(false);
 
-
-
 	function showModalUp() {
 		setModalUp(!ModalUp)
 	}
@@ -27,34 +25,35 @@ function Login() {
 	let modalUpToDraw = <SignUp />
 	let modalInToDraw = <SignIn />
 	return (
-    <div >
-      <section>
+    <div className={styles.section}>
+      <section className={styles.imageContainer}>
         <Image 
       src="/background.png"
 	  height={1368}
 	  width={684}
       alt="Dépotoir Tweeter"
+      className={styles.background}
 		/>
-      </section>
-      <section>
         <Image 
 		src="/logo.png"
-		height={500}
-		width={500}
+        height={150}
+        width={150}
 		alt="Logo d'un oiseau Tweeter retourné et mort"
-		/>
-        <section>
-          <h1 className={styles.title}>See what's Happening!</h1>
-          <h2 className={styles.title}>Join Hackatweet today</h2>
-          <button onClick={() => showModalUp()}>Sign Up</button>
+		className={styles.logo}
+        />
+      </section>
+      <section>
+
+        <section className={styles.connexion}>
+          <h1>See what's Happening!</h1>
+          <h2>Join Hackatweet today</h2>
+          <button onClick={() => showModalUp()} className={styles.btn}>Sign Up</button>
           <h3>Already have an account?</h3>
-          <button onClick={() => showModalIn()}>Sign In</button>
+          <button onClick={() => showModalIn()} className={styles.btn}>Sign In</button>
         </section>
       </section>
 		{(ModalUp) ? (modalUpToDraw) : ('')}
 		{(ModalIn) ? (modalInToDraw) : ('')}
-
-
     </div>
   );
 }

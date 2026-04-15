@@ -1,8 +1,8 @@
 import styles from '../styles/Home.module.css';
 
 
-function Home() {
-
+function Home(props) {
+  console.log(props)
 
   return (
     <div>

@@ -1,7 +1,7 @@
 import Login from '../components/Login';
 
 function Index() {
-  return <Login />;
+  return <Route path="/" element={<Login />}/>;
 }
 
 export default Index;

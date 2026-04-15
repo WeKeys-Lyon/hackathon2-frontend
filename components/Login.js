@@ -16,16 +16,16 @@ function Login() {
 
 
 
-	function showModalUp() {
+	const showModalUp = () =>{
 		setModalUp(!ModalUp)
 	}
 
-	function showModalIn() {
+	const showModalIn = () => {
 		setModalIn(!ModalIn)
 	}
 
-	let modalUpToDraw = <SignUp />
-	let modalInToDraw = <SignIn />
+	let modalUpToDraw = <SignUp showModalUp={showModalUp}/>
+	let modalInToDraw = <SignIn showModalIn={showModalIn}/>
 	return (
     <div >
       <section>

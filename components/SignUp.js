@@ -26,11 +26,13 @@ function SignUp(props) {
                     }
                 });
         };
-
-        
+        function ModalUp() {
+            props.showModalUp()
+        }
     return (
         <>
 		 <h2>Create your hackatweet account</h2>
+         <button onClick={() => ModalUp()}>X</button>
         <input placeholder="Username" value={signUpUsername} onChange={(e) => setSignUpUsername(e.target.value)} />
         <input placeholder="Firstname" value={signUpFirstname} onChange={(e) => setSignUpFirstname(e.target.value)} />
         <input placeholder="Password" type="password" value={signUpPassword} onChange={(e) => setSignUpPassword(e.target.value)} />

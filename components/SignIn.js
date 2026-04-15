@@ -25,7 +25,6 @@ function SignIn(props) {
                 setSignInUsername('');
                 setSignInPassword('');
                 (data.result == true) ? setIsLogged(true): '';
-                //TODO : Envoyer sur la home
             }
         });
 };

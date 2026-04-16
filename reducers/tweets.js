@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+var moment = require('moment');
 
 const initialState = {
 	value: [],

@@ -15,13 +15,9 @@ function Login() {
 	const [ModalUp, setModalUp] = useState(false);
 	const [ModalIn, setModalIn] = useState(false);
 
-<<<<<<< HEAD
-	function showModalUp() {
-=======
 
 
 	const showModalUp = () =>{
->>>>>>> cd29f4aeda86bde180e9b2df8a7212ca6cdb8bd3
 		setModalUp(!ModalUp)
 	}
 
@@ -32,15 +28,9 @@ function Login() {
 	let modalUpToDraw = <SignUp showModalUp={showModalUp}/>
 	let modalInToDraw = <SignIn showModalIn={showModalIn}/>
 	return (
-<<<<<<< HEAD
     <div className={styles.section}>
+        {(user.token && user.username && user.avatar) ? <Navigate to="/home" /> : ''}
       <section className={styles.imageContainer}>
-=======
-		
-    <div >
-		{(user.token && user.username && user.avatar) ? <Navigate to="/home" /> : ''}
-      <section>
->>>>>>> cd29f4aeda86bde180e9b2df8a7212ca6cdb8bd3
         <Image 
       src="/background.png"
 	  height={1368}
@@ -48,17 +38,17 @@ function Login() {
       alt="Dépotoir Tweeter"
       className={styles.background}
 		/>
-        <Image 
-		src="/logo.png"
-        height={150}
-        width={150}
-		alt="Logo d'un oiseau Tweeter retourné et mort"
-		className={styles.logo}
-        />
       </section>
       <section>
-
-        <section className={styles.connexion}>
+        <section className={styles.connexionContainer}>
+            <Image 
+              src="/logo.png"
+                  height={50}
+                  width={50}
+                  style={{ width: '50px', height: 'auto' }}
+              alt="Logo d'un oiseau Tweeter retourné et mort"
+              className={styles.logo}
+          />
           <h1>See what's Happening!</h1>
           <h2>Join Hackatweet today</h2>
           <button onClick={() => showModalUp()} className={styles.btn}>Sign Up</button>

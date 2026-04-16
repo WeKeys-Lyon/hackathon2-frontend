@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
+import {Navigate} from "react-router-dom";
 
 import styles from '../styles/Login.module.css';
 import SignUp from './SignUp'
@@ -14,19 +15,32 @@ function Login() {
 	const [ModalUp, setModalUp] = useState(false);
 	const [ModalIn, setModalIn] = useState(false);
 
+<<<<<<< HEAD
 	function showModalUp() {
+=======
+
+
+	const showModalUp = () =>{
+>>>>>>> cd29f4aeda86bde180e9b2df8a7212ca6cdb8bd3
 		setModalUp(!ModalUp)
 	}
 
-	function showModalIn() {
+	const showModalIn = () => {
 		setModalIn(!ModalIn)
 	}
 
-	let modalUpToDraw = <SignUp />
-	let modalInToDraw = <SignIn />
+	let modalUpToDraw = <SignUp showModalUp={showModalUp}/>
+	let modalInToDraw = <SignIn showModalIn={showModalIn}/>
 	return (
+<<<<<<< HEAD
     <div className={styles.section}>
       <section className={styles.imageContainer}>
+=======
+		
+    <div >
+		{(user.token && user.username && user.avatar) ? <Navigate to="/home" /> : ''}
+      <section>
+>>>>>>> cd29f4aeda86bde180e9b2df8a7212ca6cdb8bd3
         <Image 
       src="/background.png"
 	  height={1368}

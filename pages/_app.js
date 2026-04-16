@@ -1,10 +1,14 @@
 import '../styles/globals.css';
 import Head from 'next/head';
+import Home from '../components/Home';
+import Login from '../components/Login';
 
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import { store, persistor } from '../store'; // tout vient de store.js
+
+import { BrowserRouter,Routes, Route } from 'react-router-dom';
 
 function App({ Component, pageProps }) {
   return (
@@ -13,7 +17,12 @@ function App({ Component, pageProps }) {
         <Head>
           <title>hackatweet</title>
         </Head>
-        <Component {...pageProps} />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Login />}/>
+            <Route path="/home" element={<Home />}/>
+          </Routes>
+        </BrowserRouter>
       </PersistGate>
     </Provider>
   );

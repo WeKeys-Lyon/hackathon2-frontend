@@ -1,15 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../styles/Login.module.css';
 import { login } from '../reducers/user';
-import { useRouter } from 'next/router'
+
 
 
 function SignIn(props) {  
-    const router = useRouter()
     const [signInUsername, setSignInUsername] = useState('');
 	const [signInPassword, setSignInPassword] = useState('');
-    const [isLogged, setIsLogged] = useState(false)
+
 
     const dispatch = useDispatch();
 
@@ -20,22 +19,15 @@ function SignIn(props) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: signInUsername.toLowerCase(), password: signInPassword}),
     }).then(response => response.json())
-        .then(data => {
+        .then(data =>  {
             if (data.result) {
                 console.log(data)
                 dispatch(login({ username: signInUsername, token: data.token, avatar: data.avatar, firstname: data.firstname }));
                 setSignInUsername('');
                 setSignInPassword('');
-                setIsLogged(true);
             }
         });
 };
-
-    useEffect(() => {
-        if (isLogged) {
-            router.push('/home')
-        }
-    },[isLogged])
 
     function ModalIn() {
         props.showModalIn()

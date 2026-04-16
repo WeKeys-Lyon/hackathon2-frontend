@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router'
@@ -15,7 +15,9 @@ function Login() {
 	const [ModalUp, setModalUp] = useState(false);
 	const [ModalIn, setModalIn] = useState(false);
 
-
+	useEffect(()=> {
+		(user.token && user.username && user.avatar) ? router.push('/home') : ''
+	}, [user])
 
 	const showModalUp = () =>{
 		setModalUp(!ModalUp)
@@ -30,7 +32,7 @@ function Login() {
 	return (
 		
     <div >
-		{(user.token && user.username && user.avatar) ? router.push('/home') : ''}
+		{}
       <section>
         <Image 
       src="/background.png"

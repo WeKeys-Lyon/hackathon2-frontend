@@ -1,24 +1,19 @@
-import { useState } from 'react';
+import { useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../styles/Login.module.css';
 import { login } from '../reducers/user';
-import { useRouter } from 'next/router'
+
 
 
 function SignUp(props) {
-    const router = useRouter();
     const [signUpUsername, setSignUpUsername] = useState('');
     const [signUpFirstname, setSignUpFirstname] = useState('');
 	const [signUpPassword, setSignUpPassword] = useState('');
-    const [isLogged, setIsLogged] = useState(false)
+
     
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (isLogged) {
-            router.push("/home")
-        }
-    }, [isLogged])
+
         const handleRegister = () => {
             fetch('http://localhost:3000/users/signup', {
                 method: 'POST',

@@ -4,6 +4,7 @@ import {Navigate} from "react-router-dom";
 import { useState, useEffect} from 'react';
 import { addTweet, eraseAll } from '../reducers/tweets';
 import Tweets from './Tweets';
+var moment = require('moment');
 
 function LastTweet() {
     const tweets = useSelector((state) => state.tweets.value);
@@ -25,7 +26,8 @@ function LastTweet() {
         getABatchOfTweets(0,5);
     },[]);
 
-    const toDraw = tweets.map((tweet, i) => {
+    const toDraw = tweets.slice().sort((a,b) => moment(a.date).format("x") < moment(b.date).format("x")).map((tweet, i) => {
+            console.log(moment(tweet.date).format("X"))
         return <Tweets key={i} {...tweet}/>
     })
     return (<>

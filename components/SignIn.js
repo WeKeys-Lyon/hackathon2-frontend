@@ -17,11 +17,12 @@ function SignIn(props) {
     fetch('http://localhost:3000/users/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: signInUsername.toLowerCase(), password: signInPassword }),
+        body: JSON.stringify({ username: signInUsername.toLowerCase(), password: signInPassword}),
     }).then(response => response.json())
         .then(data => {
             if (data.result) {
-                dispatch(login({ username: signInUsername, token: data.token }));
+                console.log(data)
+                dispatch(login({ username: signInUsername, token: data.token, avatar: data.avatar, firstname: data.firstname }));
                 setSignInUsername('');
                 setSignInPassword('');
                 (data.result == true) ? setIsLogged(true): '';

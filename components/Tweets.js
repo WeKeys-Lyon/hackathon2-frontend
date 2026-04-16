@@ -5,54 +5,26 @@ import {Navigate} from "react-router-dom";
 import { addTweet } from '../reducers/tweets';
 
 
-function Tweets() {
-    const [tweetContent, setTweetContent] = useState('');
-    const [tweetCounter, setTweetCounter] = useState(0);
-    const [colorCounter, setColorCounter] = useState('');
-
-    const user = useSelector((state) => state.user.value);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        setTweetCounter(tweetContent.length)
-        if (tweetCounter > 260 && tweetCounter < 279) {
-            setColorCounter('orange')
-        } else if (tweetCounter >= 279) {
-            setColorCounter('red')
-        } else {
-            setColorCounter('black')
-        }
-    },[tweetContent]);
-
-    function writeATweet(string) {
-        if (string.length <= 280) {
-            setTweetContent(string);
-        } 
-    };
-
-    function handleSumbit() {
-        fetch('http://localhost:3000/tweets/publishtweet', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ token: user.token, content: tweetContent}),
-        }).then(response => response.json())
-            .then(data => {
-                if (data.result) {
-                    dispatch(addTweet({ username: data.username, content: data.content, date: data.date, hashtags:data.hashtags }));
-                    setTweetContent('');
-                    setTweetCounter(0);
-                }
-            });
-    };
-    
+function Tweets(props) {
+    console.log(props)
     return (<>
-    <div className={styles.tweetcontainer}>
-        <div className={styles.tweetbox}><input type='text' value={tweetContent} placeholder={`What\'s up ?`} onChange={(e) => writeATweet(e.target.value)} /></div>
-        <div className={styles.tweetfooter}>
-            <div className={styles.charcounter} style={{color: colorCounter}}>{tweetCounter}/280</div>
-            <div className={styles.btntweet}><button onClick={() => handleSumbit() }>Tweet</button></div>
+    <section>
+        <div className={styles.tweetContainer}>
+            <div className={styles.tweetHeader}>
+                <div className={styles.tweetAvatar}>{props.username.avatar}</div>
+                <div className={styles.tweetFirstname}>{props.username.firstname}</div>
+                <div className={styles.tweetUsername}>{props.username.username}</div>
+                <div>Utiliser Moment</div>
+            </div>
         </div>
-    </div>
+    </section>
+    <section>
+        <div className={styles.tweetContent}>{props.content}</div>
+    </section>
+    <section>
+        <div className={styles.tweetLike}></div>
+        <div className={styles.tweetDump}></div>
+    </section>
     </>)
 
 };

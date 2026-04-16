@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../styles/Login.module.css';
 import { login } from '../reducers/user';
-import {Navigate} from "react-router-dom";
+import { useRouter } from 'next/router'
 
 
 function SignUp(props) {
+    const router = useRouter();
     const [signUpUsername, setSignUpUsername] = useState('');
     const [signUpFirstname, setSignUpFirstname] = useState('');
 	const [signUpPassword, setSignUpPassword] = useState('');
@@ -13,6 +14,11 @@ function SignUp(props) {
     
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        if (isLogged) {
+            router.push("/home")
+        }
+    }, [isLogged])
         const handleRegister = () => {
             fetch('http://localhost:3000/users/signup', {
                 method: 'POST',
@@ -25,7 +31,7 @@ function SignUp(props) {
                         setSignUpUsername('');
                         setSignUpPassword('');
                         setSignUpFirstname('');
-                        (data.result == true) ? setIsLogged(true): '';
+                        setIsLogged(true);
                     }
                 });
         };
@@ -40,7 +46,6 @@ function SignUp(props) {
         <input placeholder="Firstname" value={signUpFirstname} onChange={(e) => setSignUpFirstname(e.target.value)} />
         <input placeholder="Password" type="password" value={signUpPassword} onChange={(e) => setSignUpPassword(e.target.value)} />
         <button onClick={() => handleRegister()}>Sign Up</button>
-        {(isLogged) ? <Navigate to="/home" /> : ''}
 		</>
     )
 };

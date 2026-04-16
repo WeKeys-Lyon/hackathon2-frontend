@@ -1,6 +1,5 @@
 import styles from '../styles/Menu.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import {Navigate} from "react-router-dom";
 import {useEffect, useState} from 'react';
 import * as React from 'react';
 

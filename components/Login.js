@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
-import {Navigate} from "react-router-dom";
+import { useRouter } from 'next/router'
 
 import styles from '../styles/Login.module.css';
 import SignUp from './SignUp'
@@ -9,7 +9,7 @@ import SignIn from './SignIn'
 
 
 function Login() {
-
+	const router = useRouter()
 	const user = useSelector((state) => state.user.value);
 
 	const [ModalUp, setModalUp] = useState(false);
@@ -30,7 +30,7 @@ function Login() {
 	return (
 		
     <div >
-		{(user.token && user.username && user.avatar) ? <Navigate to="/home" /> : ''}
+		{(user.token && user.username && user.avatar) ? router.push('/home') : ''}
       <section>
         <Image 
       src="/background.png"

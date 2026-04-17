@@ -2,7 +2,6 @@ import { useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../styles/Signup.module.css'
 import { login } from '../reducers/user';
-import {Navigate} from "react-router-dom";
 import Image from 'next/image';
 
 
@@ -27,7 +26,6 @@ function SignUp(props) {
                         setSignUpUsername('');
                         setSignUpPassword('');
                         setSignUpFirstname('');
-                        setIsLogged(true);
                     }
                 });
         };

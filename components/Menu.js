@@ -9,8 +9,6 @@ function Menu(props) {
     const user = useSelector((state) => state.user.value);
     const srcAvatar = '/avatars/elon.png';
 
-    const srcAvatar = '/avatars/goodenough.png';
-    const accountName = '@' + user.username;
     return (<>
         <div className={styles.leftcontainer}>
         <Link className={styles.link} href="/home">

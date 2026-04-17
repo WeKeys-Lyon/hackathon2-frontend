@@ -50,7 +50,6 @@ function SignIn(props) {
             <input className={styles.field} placeholder="Username" value={signInUsername} onChange={(e) => setSignInUsername(e.target.value)} />
             <input  className={styles.field}placeholder="Password" type="password" value={signInPassword} onChange={(e) => setSignInPassword(e.target.value)} />
             <button className={styles.btn} onClick={() => handleConnection()}>Sign In</button>
-            {(isLogged) ? <Navigate to="/home" /> : ''}
 	    </section>
         </div>
         </>)

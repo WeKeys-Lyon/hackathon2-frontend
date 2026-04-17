@@ -52,7 +52,6 @@ function SignUp(props) {
             <input  className={styles.field} placeholder="Firstname" value={signUpFirstname} onChange={(e) => setSignUpFirstname(e.target.value)} />
             <input  className={styles.field} placeholder="Password" type="password" value={signUpPassword} onChange={(e) => setSignUpPassword(e.target.value)} />
             <button className={styles.btn} onClick={() => handleRegister()}>Sign Up</button>
-            {(isLogged) ? <Navigate to="/home" /> : ''}
 		</section>
         </div>
         </>

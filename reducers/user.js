@@ -8,7 +8,7 @@ const initialState = {
     firstname: null,
     avatar: null,
     id: null,
-    likes: []
+    likes: null
   },
 };
 
@@ -30,10 +30,15 @@ export const userSlice = createSlice({
       state.value.firstname = null;
       state.value.avatar = null;
       state.value.id = null;
-      state.value.likes = null;
+      state.value.likes = [];
     },
     addLike : (state, action) => {
-      state.value.likes.push(action.payload);
+      if (state.value.likes == undefined) {
+        state.value.likes = [action.payload]
+      } else {
+        state.value.likes.push(action.payload);
+      }
+      
     },
     delLike : (state, action) => {
       state.value.likes = state.value.likes.filter((tweet) => tweet !== action.payload)

@@ -25,7 +25,7 @@ function LastTweet() {
         getABatchOfTweets(0,5);
     },[]);
 
-    const toDraw = tweets.slice().sort((a,b) => moment(a.date).format("x") < moment(b.date).format("x")).map((tweet, i) => {
+    const toDraw = tweets.slice().sort((a,b) => moment(a.date).format("x") > moment(b.date).format("x")).map((tweet, i) => {
         return <Tweets key={i} {...tweet}/>
     })
     return (<>

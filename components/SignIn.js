@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from '../styles/Login.module.css';
+import styles from '../styles/Signin.module.css';
 import { login } from '../reducers/user';
-
+import {Navigate} from "react-router-dom";
+import Image from 'next/image';
 
 
 function SignIn(props) {  
@@ -34,13 +35,25 @@ function SignIn(props) {
     }
 
     return      (<>
-		<h2>Connect to hackatweet</h2>
-        <button onClick={() => ModalIn()}>X</button>
-        <input placeholder="Username" value={signInUsername} onChange={(e) => setSignInUsername(e.target.value)} />
-        <input placeholder="Password" type="password" value={signInPassword} onChange={(e) => setSignInPassword(e.target.value)} />
-        <button onClick={() => handleConnection()}>Sign In</button>
-       {/*  {(isLogged) ? router.push("/home") : ''} */}
-	    </>)
+        <div className={styles.overlay}>
+        <section className={styles.section}>
+            <Image 
+                src="/logo.png"
+                height={50}
+                width={50}
+                style={{ width: '50px', height: 'auto' }}
+                alt="Logo d'un oiseau Tweeter retourné et mort"
+                className={styles.logo}
+                />  
+		<h2 className={styles.h2}>Connect to hackatweet</h2>
+            <button className={styles.close} onClick={() => ModalIn()}>X</button>
+            <input className={styles.field} placeholder="Username" value={signInUsername} onChange={(e) => setSignInUsername(e.target.value)} />
+            <input  className={styles.field}placeholder="Password" type="password" value={signInPassword} onChange={(e) => setSignInPassword(e.target.value)} />
+            <button className={styles.btn} onClick={() => handleConnection()}>Sign In</button>
+            {(isLogged) ? <Navigate to="/home" /> : ''}
+	    </section>
+        </div>
+        </>)
 };
 
 export default SignIn

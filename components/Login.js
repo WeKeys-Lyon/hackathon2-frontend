@@ -34,32 +34,36 @@ function Login() {
     <div >
 		{}
       <section>
+    <div className={styles.section}>
+        {(user.token && user.username && user.avatar) ? <Navigate to="/home" /> : ''}
+      <section className={styles.imageContainer}>
         <Image 
       src="/background.png"
 	  height={1368}
 	  width={684}
       alt="Dépotoir Tweeter"
+      className={styles.background}
 		/>
       </section>
       <section>
-        <Image 
-		src="/logo.png"
-		height={500}
-		width={500}
-		alt="Logo d'un oiseau Tweeter retourné et mort"
-		/>
-        <section>
-          <h1 className={styles.title}>See what's Happening!</h1>
-          <h2 className={styles.title}>Join Hackatweet today</h2>
-          <button onClick={() => showModalUp()}>Sign Up</button>
+        <section className={styles.connexionContainer}>
+            <Image 
+              src="/logo.png"
+                  height={50}
+                  width={50}
+                  style={{ width: '50px', height: 'auto' }}
+              alt="Logo d'un oiseau Tweeter retourné et mort"
+              className={styles.logo}
+          />
+          <h1>See what's Happening!</h1>
+          <h2>Join Hackatweet today</h2>
+          <button onClick={() => showModalUp()} className={styles.btn}>Sign Up</button>
           <h3>Already have an account?</h3>
-          <button onClick={() => showModalIn()}>Sign In</button>
+          <button onClick={() => showModalIn()} className={styles.btn}>Sign In</button>
         </section>
       </section>
 		{(ModalUp) ? (modalUpToDraw) : ('')}
 		{(ModalIn) ? (modalInToDraw) : ('')}
-
-
     </div>
   );
 }

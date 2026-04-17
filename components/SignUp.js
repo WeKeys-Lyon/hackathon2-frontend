@@ -22,7 +22,7 @@ function SignUp(props) {
             }).then(response => response.json())
                 .then(data => {
                     if (data.result) {
-                        dispatch(login({ username: signUpUsername, token: data.token, avatar: 1, firstname: data.firstname }));
+                        dispatch(login({ username: signUpUsername, token: data.token, avatar: 1, firstname: data.firstname, id: data.id }));
                         setSignUpUsername('');
                         setSignUpPassword('');
                         setSignUpFirstname('');

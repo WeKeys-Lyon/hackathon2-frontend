@@ -11,7 +11,7 @@ function SignIn(props) {
 
 
     const dispatch = useDispatch();
-
+    const user = useSelector((state) => state.user.value)
     const handleConnection = () => {
 
     fetch('http://localhost:3000/users/signin', {
@@ -22,9 +22,10 @@ function SignIn(props) {
         .then(data =>  {
             if (data.result) {
                 console.log(data)
-                dispatch(login({ username: signInUsername, token: data.token, avatar: data.avatar, firstname: data.firstname }));
+                dispatch(login({ username: signInUsername, token: data.token, avatar: data.avatar, firstname: data.firstname, id: data.id }));
                 setSignInUsername('');
                 setSignInPassword('');
+                
             }
         });
 };

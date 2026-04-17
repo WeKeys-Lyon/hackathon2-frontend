@@ -1,9 +1,15 @@
 import {useRouter} from 'next/router';
+import { useSelector, useDispatch} from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { deleteTweet } from '../reducers/tweets';
 import styles from '../styles/Tweets.module.css'
 
 function Tweets(props) {
     const router = useRouter();
-    
+/*     console.log(props) */
+    /* const [isLiked, setLiked] = useState(false); */
+    const dispatch = useDispatch();
     const formatContent = (text) => {
     return text.split(/(#\w+)/g).map((word, index) => {
     if (word.startsWith('#') && word.length > 1) {
@@ -17,6 +23,21 @@ function Tweets(props) {
     return word;
     });
     };
+
+    const handleDelete = async () => {
+        const myUrl = `http://localhost:3000/tweets/${props.username.token}/${props._id}`
+        return await fetch(encodeURI(myUrl), {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+        }).then(response => response.json()).then(data => {
+            
+            if (data.result) {
+                dispatch(deleteTweet(props))
+            }
+        });
+    };
+
+    const trashbin = <FontAwesomeIcon onClick={() => handleDelete()} style={{cursor: 'pointer'}} icon={faTrash} className={styles.tweetDump} />;
 
     const formatDate = (date) => {
     const now = new Date();
@@ -49,6 +70,13 @@ function Tweets(props) {
                 <div className={styles.date}>- {formatDate(props.date)}</div>
             </div>
         </div>
+    </section>
+    <section>
+        <div className={styles.tweetContent}>{formatContent(props.content)}</div>
+    </section>
+    <section>
+        <div className={styles.tweetLike}></div>
+        {(props.isMine) ? trashbin : ''}
         <div>
             <div className={styles.tweetContent}>{formatContent(props.content)}</div>
         </div>

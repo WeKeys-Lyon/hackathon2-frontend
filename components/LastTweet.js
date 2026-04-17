@@ -2,12 +2,14 @@ import styles from '../styles/Menu.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect} from 'react';
 import { addTweet, eraseAll } from '../reducers/tweets';
+
 import Tweets from './Tweets';
 var moment = require('moment');
 
 function LastTweet() {
     const tweets = useSelector((state) => state.tweets.value);
-    const [emptyTweet, setEmptyTweet] = useState(false)
+    const user = useSelector((state) => state.user.value);
+    const [emptyTweet, setEmptyTweet] = useState(false);
     const dispatch = useDispatch();
 
     async function getABatchOfTweets(start,end) {
@@ -33,9 +35,16 @@ function LastTweet() {
             setEmptyTweet(false)
         }
     },[tweets])
+    
     const empty = <div>Circulez ! Y'a rien à voir ici !</div>
     const toDraw = tweets.slice().sort((a,b) => moment(a.date).format("x") < moment(b.date).format("x")).map((tweet, i) => {
-        return <Tweets key={i} {...tweet}/>
+
+        if  (tweet.username._id == user.id || tweet.username == user.id) {
+            return <Tweets key={i} {...tweet} isMine="true" user={user}/>
+        } else {
+            return <Tweets key={i} {...tweet}/>
+        }
+        
     })
     return (<>
         {(tweets.length == 0) ? empty : toDraw}

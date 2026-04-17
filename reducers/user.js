@@ -6,25 +6,28 @@ const initialState = {
     token: null, 
     username: null,
     firstname: null,
-    avatar: null
+    avatar: null,
+    id: null
   },
 };
 
 export const userSlice = createSlice({
-  name: 'username',
+  name: 'user',
   initialState,
   reducers: {
     login: (state, action) => {
       state.value.token = action.payload.token;
       state.value.username = action.payload.username;
       state.value.firstname = action.payload.firstname;
-      state.value.avatar = action.payload.avatar
+      state.value.avatar = action.payload.avatar;
+      state.value.id = action.payload.id
     },
     logout: (state) => {
       state.value.token = null;
       state.value.username = null;
       state.value.firstname = null;
-      state.value.avatar = null
+      state.value.avatar = null;
+      state.value.id = null;
     },
   },
 });

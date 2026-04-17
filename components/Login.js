@@ -31,11 +31,7 @@ function Login() {
 	let modalInToDraw = <SignIn showModalIn={showModalIn}/>
 	return (
 		
-    <div >
-		{}
-      <section>
     <div className={styles.section}>
-        {(user.token && user.username && user.avatar) ? <Navigate to="/home" /> : ''}
       <section className={styles.imageContainer}>
         <Image 
       src="/background.png"

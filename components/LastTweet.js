@@ -38,15 +38,17 @@ function LastTweet() {
     
     const empty = <div>Circulez ! Y'a rien à voir ici !</div>
     const toDraw = tweets.slice().sort((a,b) => moment(a.date).format("x") < moment(b.date).format("x")).map((tweet, i) => {
-
-        if  (tweet.username._id == user.id || tweet.username == user.id) {
-            return <Tweets key={i} {...tweet} isMine="true" user={user}/>
+        if (user.likes.find(tweet._id) && (tweet.username._id == user.id || tweet.username == user.id)) {
+            return <Tweets key={i} {...tweet} isMine="true" user={user} liked="true"/>
+        } else if (tweet.username._id == user.id || tweet.username == user.id) {
+            return <Tweets key={i} {...tweet} isMine="true" user={user} />
         } else {
             return <Tweets key={i} {...tweet}/>
         }
+        })
+
         
-    })
-    return (<>
+   return (<>
         {(tweets.length == 0) ? empty : toDraw}
     </>)
 

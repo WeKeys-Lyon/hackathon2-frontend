@@ -1,9 +1,9 @@
-import styles from '../styles/Menu.module.css';
 import {useRouter} from 'next/router';
 import { useSelector, useDispatch} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { deleteTweet } from '../reducers/tweets';
+import styles from '../styles/Tweets.module.css'
 
 function Tweets(props) {
     const router = useRouter();
@@ -39,14 +39,35 @@ function Tweets(props) {
 
     const trashbin = <FontAwesomeIcon onClick={() => handleDelete()} style={{cursor: 'pointer'}} icon={faTrash} className={styles.tweetDump} />;
 
+    const formatDate = (date) => {
+    const now = new Date();
+    const tweetDate = new Date(date);
+    const diff = Math.floor((now - tweetDate) / 1000); // en secondes
+
+    const hours = Math.floor(diff / 3600);
+
+    if (hours < 1) {
+        const minutes = Math.floor(diff / 60);
+        return `${minutes} min ago`;
+    }
+
+    if (hours < 24) {
+        return `${hours} h ago`;
+    }
+
+    const days = Math.floor(hours / 24);
+    return `${days} d ago`;
+};
+
+   
     return (<>
-    <section>
+    <section className={styles.section}>
         <div className={styles.tweetContainer}>
             <div className={styles.tweetHeader}>
-                <div className={styles.tweetAvatar}>{props.username.avatar}</div>
-                <div className={styles.tweetFirstname}>{props.username.firstname}</div>
-                <div className={styles.tweetUsername}>{props.username.username}</div>
-                <div>{props.date}</div>
+                <div className={styles.avatar}>{props.username.avatar}</div>
+                <div className={styles.firstname}>{props.username.firstname}</div>
+                <div className={styles.username}>@{props.username.username}</div>
+                <div className={styles.date}>- {formatDate(props.date)}</div>
             </div>
         </div>
     </section>
@@ -56,6 +77,13 @@ function Tweets(props) {
     <section>
         <div className={styles.tweetLike}></div>
         {(props.isMine) ? trashbin : ''}
+        <div>
+            <div className={styles.tweetContent}>{formatContent(props.content)}</div>
+        </div>
+        <section className={styles.tweetactions}>
+            <div className={styles.tweetLike}>X</div>
+            <div className={styles.tweetDump}>X</div>
+        </section>
     </section>
     </>)
 

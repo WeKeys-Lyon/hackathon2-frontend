@@ -1,0 +1,55 @@
+.leftcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  align-items: flex-start;
+}
+
+.Link a {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  object-fit: contain;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  position: sticky;
+  top: 20px;
+}
+
+.bottomcontainer {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.avatar {
+    border-radius: 50%;
+    border: 10px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.avatar:hover {
+    border-color: red;
+}
+
+.bottomnames {
+    padding: 10px;
+}
+
+.firstname {
+    font-weight: 700;
+    font-size: x-large;
+}
+
+.username {
+    font-weight: 200;
+    font-size:small;
+    opacity: 0.8;
+}

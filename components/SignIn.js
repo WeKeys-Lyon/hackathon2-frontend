@@ -9,7 +9,7 @@ import Image from 'next/image';
 function SignIn(props) {  
     const [signInUsername, setSignInUsername] = useState('');
 	const [signInPassword, setSignInPassword] = useState('');
-    const [isLogged, setIsLogged] = useState(false)
+
 
     const dispatch = useDispatch();
 
@@ -20,16 +20,16 @@ function SignIn(props) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: signInUsername.toLowerCase(), password: signInPassword}),
     }).then(response => response.json())
-        .then(data => {
+        .then(data =>  {
             if (data.result) {
                 console.log(data)
                 dispatch(login({ username: signInUsername, token: data.token, avatar: data.avatar, firstname: data.firstname }));
                 setSignInUsername('');
                 setSignInPassword('');
-                (data.result == true) ? setIsLogged(true): '';
             }
         });
 };
+
     function ModalIn() {
         props.showModalIn()
     }

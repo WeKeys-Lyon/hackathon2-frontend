@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../styles/Signup.module.css'
 import { login } from '../reducers/user';
@@ -10,9 +10,10 @@ function SignUp(props) {
     const [signUpUsername, setSignUpUsername] = useState('');
     const [signUpFirstname, setSignUpFirstname] = useState('');
 	const [signUpPassword, setSignUpPassword] = useState('');
-    const [isLogged, setIsLogged] = useState(false)
+
     
     const dispatch = useDispatch();
+
 
         const handleRegister = () => {
             fetch('http://localhost:3000/users/signup', {
@@ -26,7 +27,7 @@ function SignUp(props) {
                         setSignUpUsername('');
                         setSignUpPassword('');
                         setSignUpFirstname('');
-                        (data.result == true) ? setIsLogged(true): '';
+                        setIsLogged(true);
                     }
                 });
         };

@@ -1,7 +1,9 @@
 import styles from '../styles/Menu.module.css';
+import {useRouter} from 'next/router';
 
 function Tweets(props) {
-
+    const router = useRouter();
+    
     const formatContent = (text) => {
     return text.split(/(#\w+)/g).map((word, index) => {
     if (word.startsWith('#') && word.length > 1) {

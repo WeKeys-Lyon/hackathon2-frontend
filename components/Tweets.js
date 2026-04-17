@@ -49,13 +49,13 @@ function Tweets(props) {
                 <div className={styles.date}>- {formatDate(props.date)}</div>
             </div>
         </div>
-    </section>
-    <section>
-        <div className={styles.tweetContent}>{formatContent(props.content)}</div>
-    </section>
-    <section>
-        <div className={styles.tweetLike}></div>
-        <div className={styles.tweetDump}></div>
+        <div>
+            <div className={styles.tweetContent}>{formatContent(props.content)}</div>
+        </div>
+        <section className={styles.tweetactions}>
+            <div className={styles.tweetLike}>X</div>
+            <div className={styles.tweetDump}>X</div>
+        </section>
     </section>
     </>)
 

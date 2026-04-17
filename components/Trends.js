@@ -17,7 +17,9 @@ function Trends() {
     const toDraw = trends.map((trend, i) => {
         const cleanHashtag = trend.hashtags.slice(1)
         if (trend.count < 2) {
-            return (<React.Fragment key={i}><div onClick={() => router.push(`/hashtags/${cleanHashtag}`)} style={{ cursor: 'pointer'}}>{trend.hashtags}</div><div>{trend.count} Tweet</div></React.Fragment>)
+            return (<React.Fragment key={i}>
+                <div onClick={() => router.push(`/hashtags/${cleanHashtag}`)} style={{ cursor: 'pointer'}}>{trend.hashtags}</div>
+                <div>{trend.count} Tweet</div></React.Fragment>)
         } else {
             return (<React.Fragment key={i}><div onClick={() => router.push(`/hashtags/${cleanHashtag}`)} style={{ cursor: 'pointer'}}>{trend.hashtags}</div><div>{trend.count} Tweets</div></React.Fragment>)
         }

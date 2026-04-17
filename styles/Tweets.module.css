@@ -94,3 +94,25 @@
     flex-direction: column;
     justify-content: flex-start;
 }
+
+.tweetContent {
+    font-size: 15px;
+    padding: 3px 0px 10px 0px;
+}
+
+.tweetContent:hover {
+    font-weight: 800;
+}
+
+.tweetactions {
+    display: flex;
+    margin: 1px;
+}
+
+.tweetLike {
+    padding: 2px;
+}
+
+.tweetDump {
+    padding: 2px;
+}

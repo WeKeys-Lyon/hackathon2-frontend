@@ -72,17 +72,12 @@ function Tweets(props) {
         </div>
     </section>
     <section>
-        <div className={styles.tweetContent}>{formatContent(props.content)}</div>
-    </section>
-    <section>
-        <div className={styles.tweetLike}></div>
-        {(props.isMine) ? trashbin : ''}
         <div>
             <div className={styles.tweetContent}>{formatContent(props.content)}</div>
         </div>
         <section className={styles.tweetactions}>
             <div className={styles.tweetLike}>X</div>
-            <div className={styles.tweetDump}>X</div>
+            {(props.isMine) ? trashbin : ''}
         </section>
     </section>
     </>)

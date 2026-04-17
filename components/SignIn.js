@@ -22,7 +22,11 @@ function SignIn(props) {
         .then(data =>  {
             if (data.result) {
                 console.log(data)
+                if (data.likes.length > 0) {
+                dispatch(login({ username: signInUsername, token: data.token, avatar: data.avatar, firstname: data.firstname, id: data.id, likes: data.likes }));
+                } else {
                 dispatch(login({ username: signInUsername, token: data.token, avatar: data.avatar, firstname: data.firstname, id: data.id }));
+                }
                 setSignInUsername('');
                 setSignInPassword('');
                 

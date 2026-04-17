@@ -3,12 +3,12 @@ import { useSelector, useDispatch} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { deleteTweet } from '../reducers/tweets';
-import styles from '../styles/Tweets.module.css'
+import {delLike, addLike} from '../reducers/user';
+import styles from '../styles/Tweets.module.css';
 
 function Tweets(props) {
+    console.log(props)
     const router = useRouter();
-/*     console.log(props) */
-    /* const [isLiked, setLiked] = useState(false); */
     const dispatch = useDispatch();
     const formatContent = (text) => {
     return text.split(/(#\w+)/g).map((word, index) => {
@@ -25,7 +25,7 @@ function Tweets(props) {
     };
 
     const handleDelete = async () => {
-        const myUrl = `http://localhost:3000/tweets/${props.username.token}/${props._id}`
+        const myUrl = `http://localhost:3000/tweets/${props.user.token}/${props._id}`
         return await fetch(encodeURI(myUrl), {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
@@ -36,8 +36,28 @@ function Tweets(props) {
             }
         });
     };
+    const handleLike = async () => {
+        const myUrl = `http://localhost:3000/users/likes/${props.user.token}/${props._id}`
+
+        return await fetch('http://localhost:3000/tweets/ilikeit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ tweetId: props._id, token: props.user.token}),
+        }).then(response => response.json()).then(async data => {
+            console.log(data);
+
+            if (data.result && data.erased) {
+                dispatch(delLike(props._id))
+            } else if (data.result && data.added) {
+                dispatch(addLike(props._id))
+            }
+        })
+        }
 
     const trashbin = <FontAwesomeIcon onClick={() => handleDelete()} style={{cursor: 'pointer'}} icon={faTrash} className={styles.tweetDump} />;
+    const heartRed = <FontAwesomeIcon onClick={() => handleLike()} style={{cursor: 'pointer', color: 'red'}} icon={faHeart} className={styles.tweetLike} />;
+    const heart = <FontAwesomeIcon onClick={() => handleLike()} style={{cursor: 'pointer'}} icon={faHeart} className={styles.tweetLike} />
+
 
     const formatDate = (date) => {
     const now = new Date();
@@ -76,7 +96,7 @@ function Tweets(props) {
             <div className={styles.tweetContent}>{formatContent(props.content)}</div>
         </div>
         <section className={styles.tweetactions}>
-            <div className={styles.tweetLike}>X</div>
+            {(props.liked) ? heartRed : heart}
             {(props.isMine) ? trashbin : ''}
         </section>
     </section>

@@ -6,10 +6,10 @@ import Tweets from './Tweets';
 var moment = require('moment');
 
 function TrendResults(props) {
-    const tweets = useSelector((state) => state.tweets.value);
+    
 
 
-    const toDraw = tweets.slice().sort((a,b) => moment(a.date).format("x") < moment(b.date).format("x")).map((tweet, i) => {
+    const toDraw = props.tweets.slice().sort((a,b) => moment(a.date).format("x") < moment(b.date).format("x")).map((tweet, i) => {
         return <Tweets key={i} {...tweet}/>
     })
     return (<>

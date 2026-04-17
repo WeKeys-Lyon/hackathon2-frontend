@@ -9,14 +9,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTweet, eraseAll } from '../reducers/tweets';
 export default function Hashtags() {
   const router = useRouter()
-  const [trendId, setTrendId] = useState('');
-  const [slug, setSlug] = useState(router.query.slug)
-//<p>Post: {router.query.slug}</p>
-    console.log('hey oh '+router.query.slug)
+
+  const [slug, setSlug] = useState(PathParamComponent().props.children[1]);
+  const tweets = useSelector((state) => state.tweets.value);
+
+  function PathParamComponent() {
+  const path = window.location.pathname
+  const segments = path.split("/")
+  const id = segments[2] // assuming /profile/123
+  return <h2>Profile ID: {id}</h2>
+}
+  
     useEffect(() => {
         dispatch(eraseAll())
         doSearchTrend(slug);
-    }, [])
+    }, [slug])
     function doSearchTrend(string) {
         
         const myUrl = `http://localhost:3000/trends/getid/${string}`
@@ -26,7 +33,6 @@ export default function Hashtags() {
              if (!data.trend) {
                 return
             } else {
-             setTrendId(data.trend.id);
              getABatchOfTweets(data.trend.id,0,15)
             }
         }
@@ -57,7 +63,7 @@ export default function Hashtags() {
         <section>
           <SearchTrend hashtagName={slug} changeSlug={changeSlug}/>
         </section>
-        <section>LISTE DES TWEETS<TrendResults hashtagId={trendId}/></section>
+        <section>LISTE DES TWEETS<TrendResults tweets={tweets}/></section>
       </section>
       <section>PANNEAU DE DROITE<Trends /></section>
     </>

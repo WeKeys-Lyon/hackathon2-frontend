@@ -20,3 +20,24 @@
 .title a:hover, .title a:focus, .title a:active {
   text-decoration: underline;
 }
+
+.maincontainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  height: 100vh;
+  padding: 20px;
+  color: white;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  border-right: 0.5px solid white;
+  border-left: 0.5px solid white;
+  padding: 18px;
+}
+
+.title {
+  font-size: 30px;
+}

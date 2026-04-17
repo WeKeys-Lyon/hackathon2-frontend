@@ -1,8 +1,9 @@
-import styles from '../styles/Menu.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect} from 'react';
 import { addTweet, eraseAll } from '../reducers/tweets';
 import Tweets from './Tweets';
+import styles from '../styles/Tweets.module.css'
+
 
 function WriteTweet() {
     const [tweetContent, setTweetContent] = useState('');
@@ -20,7 +21,7 @@ function WriteTweet() {
         } else if (tweetCounter >= 279) {
             setColorCounter('red')
         } else {
-            setColorCounter('black')
+            setColorCounter('white')
         }
     },[tweetContent]);
 
@@ -46,13 +47,15 @@ function WriteTweet() {
     };
 
     return (
-                  <div className={styles.tweetcontainer}>
-            <div className={styles.tweetbox}><input type='text' value={tweetContent} placeholder={`What\'s up ?`} onChange={(e) => writeATweet(e.target.value)} /></div>
-            <div className={styles.tweetfooter}>
-                <div className={styles.charcounter} style={{color: colorCounter}}>{tweetCounter}/280</div>
-                <div className={styles.btntweet}><button onClick={() => handleSumbit() }>Tweet</button></div>
-          </div>
-          </div>
+        <div className={styles.tweetcontainer}>
+            <div className={styles.tweetbox}>
+                <textarea className={styles.field} type='text' value={tweetContent} placeholder={`What\'s up ?`} onChange={(e) => writeATweet(e.target.value)} />
+                <div className={styles.btntweet}>
+                    <div className={styles.charcounter} style={{color: colorCounter}}>{tweetCounter}/280</div>
+                    <button className={styles.btn} onClick={() => handleSumbit() }>Tweet</button>
+                </div>
+            </div>
+        </div>
     )
 }
 

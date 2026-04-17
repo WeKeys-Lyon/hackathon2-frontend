@@ -6,14 +6,20 @@ import Tweets from './Tweets';
 var moment = require('moment');
 
 function TrendResults(props) {
-    
+    const [emptyTweet, setEmptyTweet] = useState(false);
+        useEffect(() => {
+        if (props.tweets.length > 0) {
+            setEmptyTweet(false)
+        }
+    },[props.tweets])
+    const empty = <div>Circulez ! Y'a rien à voir ici !</div>
 
 
     const toDraw = props.tweets.slice().sort((a,b) => moment(a.date).format("x") < moment(b.date).format("x")).map((tweet, i) => {
         return <Tweets key={i} {...tweet}/>
     })
     return (<>
-        {toDraw}
+        {(props.tweets.length == 0) ? empty : toDraw}
     </>)
 
 };

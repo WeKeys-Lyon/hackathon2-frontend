@@ -8,7 +8,6 @@ import {styles} from '../styles/Home.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { addTweet, eraseAll } from '../reducers/tweets';
 export default function Hashtags() {
-  const router = useRouter()
 
   const [slug, setSlug] = useState(PathParamComponent().props.children[1]);
   const tweets = useSelector((state) => state.tweets.value);
@@ -24,6 +23,7 @@ export default function Hashtags() {
         dispatch(eraseAll())
         doSearchTrend(slug);
     }, [slug])
+
     function doSearchTrend(string) {
         
         const myUrl = `http://localhost:3000/trends/getid/${string}`
@@ -54,7 +54,6 @@ export default function Hashtags() {
        return
     }
 
-
   return (
     <>
       {}
@@ -65,7 +64,7 @@ export default function Hashtags() {
         </section>
         <section>LISTE DES TWEETS<TrendResults tweets={tweets}/></section>
       </section>
-      <section>PANNEAU DE DROITE<Trends /></section>
+      <section>PANNEAU DE DROITE<Trends changeSlug={changeSlug}/></section>
     </>
   )
 }

@@ -1,5 +1,5 @@
-import styles from '../styles/Menu.module.css';
 import {useRouter} from 'next/router';
+import styles from '../styles/Tweets.module.css'
 
 function Tweets(props) {
     const router = useRouter();
@@ -20,13 +20,13 @@ function Tweets(props) {
 
    
     return (<>
-    <section>
+    <section className={styles.section}>
         <div className={styles.tweetContainer}>
             <div className={styles.tweetHeader}>
-                <div className={styles.tweetAvatar}>{props.username.avatar}</div>
-                <div className={styles.tweetFirstname}>{props.username.firstname}</div>
-                <div className={styles.tweetUsername}>{props.username.username}</div>
-                <div>{props.date}</div>
+                <div className={styles.avatar}>{props.username.avatar}</div>
+                <div className={styles.firstname}>{props.username.firstname}</div>
+                <div className={styles.username}>@{props.username.username}</div>
+                <div className={styles.date}>{props.date}</div>
             </div>
         </div>
     </section>

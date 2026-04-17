@@ -2,7 +2,6 @@ import styles from '../styles/Home.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
-import { addTweet } from '../reducers/tweets';
 
 import Menu from './Menu';
 import LastTweet from './LastTweet';
@@ -18,16 +17,22 @@ function Home() {
   }, [] )
 
   return (
-    <div>
-      {}
-      <section>PANNEAU DE GAUCHE<Menu /></section>
-      <section>PANNEAU CENTRAL
-        <section>
-          <WriteTweet />
-        </section>
-        <section>LISTE DES TWEETS<LastTweet /></section>
+    <div className={styles.maincontainer}>
+      <section className={styles.left}>
+        <Menu username={user.username} avatar={user.avatar} firstname={user.firstname} />
       </section>
-      <section>PANNEAU DE DROITE<Trends /></section>
+      <section className={styles.center}>
+        <div>
+          <p className={styles.title} >Home</p>
+          <WriteTweet />
+        </div>
+        <div className={styles.tweetList}>
+          <LastTweet />
+        </div>
+      </section>
+      <section className={styles.right}>
+        <Trends />
+      </section>
     </div>
   );
 }

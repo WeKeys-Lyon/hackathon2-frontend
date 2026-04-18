@@ -24,8 +24,8 @@ function Menu(props) {
                 <Image 
                 src={srcAvatar}
                 alt="Avatar Picture"
-                width={90}
-                height={90}
+                width={60}
+                height={60}
                 className={styles.avatar}
                 />
             <div className={styles.bottomnames}>

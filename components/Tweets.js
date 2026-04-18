@@ -1,4 +1,5 @@
 import {useRouter} from 'next/router';
+import { useState } from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +13,7 @@ function Tweets(props) {
     const router = useRouter();
     const dispatch = useDispatch();
     const srcAvatar = '/avatars/elon.png';
+    const [counter, setCounter] = useState(props.likes)
 
 
     const formatContent = (text) => {
@@ -52,16 +54,19 @@ function Tweets(props) {
 
             if (data.result && data.erased) {
                 dispatch(delLike(props._id))
+                setCounter(counter - 1)
             } else if (data.result && data.added) {
                 dispatch(addLike(props._id))
+                setCounter(counter + 1)
             }
         })
         }
 
     const trashbin = <FontAwesomeIcon onClick={() => handleDelete()} style={{cursor: 'pointer'}} icon={faTrash} className={styles.tweetDump} />;
-    const heartRed = <FontAwesomeIcon onClick={() => handleLike()} style={{cursor: 'pointer', color: 'red'}} icon={faHeart} className={styles.tweetLike} />;
+    const heartRed = <><FontAwesomeIcon onClick={() => handleLike()} style={{cursor: 'pointer', color: 'red'}} icon={faHeart} className={styles.tweetLike} />
+    <div className={styles.countLikes}>{counter}</div></>;
     const heart = <><FontAwesomeIcon onClick={() => handleLike()} style={{cursor: 'pointer'}} icon={faHeart} className={styles.tweetLike} />
-    <div className={styles.countLikes}>{props.likes}</div></>
+    <div className={styles.countLikes}>{counter}</div></>;
 
 
     const formatDate = (date) => {

@@ -1,3 +1,10 @@
+/* Responsive */
+@media (max-width: 768px) {
+  .center {
+    height: 80%;
+  }
+}
+
 .main {
   display: flex;
   flex-direction: column;

@@ -1,3 +1,10 @@
+/* Responsive */
+@media (max-width: 768px) {
+  .bottomcontainer {
+    background-color: rgb(18, 30, 67);;
+  }
+}
+
 .leftcontainer {
   position: fixed;
   left: 20px;

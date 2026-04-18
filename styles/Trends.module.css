@@ -37,6 +37,7 @@
 .title {
   line-height: 1.15;
   font-size: 4rem;
+  padding-left: 20px;
 }
 
 .title a {
@@ -69,7 +70,18 @@
   font-size: 30px;
 }
 
-.search {
+
+.searchContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchtags {
     background: none;
-    background-color: #0070f3;
+    width: 80%;
+    border-radius: 20px;
+    background-color: #1b232c;
+    color: white;
+    padding: 10px;
 }

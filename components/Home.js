@@ -22,10 +22,8 @@ function Home() {
         <Menu username={user.username} avatar={user.avatar} firstname={user.firstname} />
       </section>
       <section className={styles.center}>
-        <div>
           <p className={styles.title} >Home</p>
           <WriteTweet />
-        </div>
         <div className={styles.tweetList}>
           <LastTweet />
         </div>

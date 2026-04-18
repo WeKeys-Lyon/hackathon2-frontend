@@ -1,7 +1,8 @@
 
-import {styles} from '../styles/Home.module.css'
+import styles from '../styles/Trends.module.css'
 import {useState} from 'react';
 import {useRouter} from 'next/router';
+
 
 
 export default function SearchTrend(props) {
@@ -13,7 +14,7 @@ export default function SearchTrend(props) {
   return (
     <>
     <section>
-    <form
+    <form className={styles.searchContainer}
         onSubmit={(e) => {
           e.preventDefault(); // <-- prevent the default form action
           const cleanWord = search.replace('#', '');
@@ -21,7 +22,7 @@ export default function SearchTrend(props) {
            router.push(`/hashtags/${cleanWord}`);
         }}
       >
-        <input
+        <input className={styles.searchtags}
           key="searchBox"
           type="text"
           value={search}
@@ -30,7 +31,6 @@ export default function SearchTrend(props) {
         />
       </form>
       </section>
-    
     </>
   )
 }

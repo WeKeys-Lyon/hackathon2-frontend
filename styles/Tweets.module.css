@@ -6,6 +6,7 @@
 
 .tweetbox {
     background: none;
+    padding: 20px;
 }
 
 .field {
@@ -55,8 +56,13 @@
 }
 
 
-.tweetContainer {
+.tweetcontainer {
     margin: 5px;
+    position: sticky;
+    z-index: 10;
+    top: 0; 
+    background-color: #151d26;
+    padding: 10px;
 }
 
 .avatar {
@@ -81,6 +87,7 @@
 .tweetHeader {
     display: flex;
     align-items: center;
+    padding: 0px 10px;
 }
 
 .date {
@@ -103,7 +110,7 @@
 
 .tweetContent {
     font-size: 15px;
-    padding: 3px 0px 10px 0px;
+    padding: 20px;
 }
 
 .tweetContent:hover {
@@ -113,12 +120,21 @@
 .tweetactions {
     display: flex;
     margin: 1px;
+    padding: 5px;
 }
 
 .tweetLike {
     padding: 2px;
 }
 
+.tweetLike:hover {
+   color: red
+}
+
 .tweetDump {
     padding: 2px;
+}
+
+.tweetDump:hover {
+    color: red;
 }

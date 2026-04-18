@@ -9,17 +9,17 @@ function Menu(props) {
     const user = useSelector((state) => state.user.value);
     const srcAvatar = '/avatars/elon.png';
 
-    return (<>
-        <div className={styles.leftcontainer}>
-        <Link className={styles.link} href="/home">
+    return (<><Link className={styles.link} href="/home">
+            <div className={styles.leftcontainer}>
+            
             <Image className={styles.logo}
                 src="/logo.png"
                 height={30}
                 width={30}
                 alt="Logo d'un oiseau Tweeter retourné et mort"
-            /> 
-        </Link>
-        </div>
+            ></Image> 
+            
+        </div></Link>
         <div className={styles.bottomcontainer}>
                 <Image 
                 src={srcAvatar}

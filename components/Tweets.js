@@ -85,6 +85,7 @@ function Tweets(props) {
 
    
     return (<>
+    <div className={styles.globaldiv}>
     <section className={styles.section}>
         <div className={styles.tweetContainer}>
             <div className={styles.tweetHeader}>
@@ -112,6 +113,7 @@ function Tweets(props) {
             {(props.isMine) ? trashbin : ''}
         </section>
     </section>
+    </div>
     </>)
 
 };

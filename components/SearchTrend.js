@@ -12,7 +12,6 @@ export default function SearchTrend(props) {
     const handleChange = (e) => setSearch(e.target.value)
   return (
     <>
-    <section>Hashtag</section>
     <section>
     <form
         onSubmit={(e) => {

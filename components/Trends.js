@@ -23,7 +23,7 @@ function Trends(props) {
             if (trend.count < 2) {
             return (<React.Fragment key={i}>
                 <div className={styles.words}>
-                    <div onClick={() => handleChangeSlug(cleanHashtag)}>{trend.hashtags}</div>
+                    <div onClick={() => handleChangeSlug(cleanHashtag)} className={styles.hashtags}>{trend.hashtags}</div>
                     <div>{trend.count} Tweet</div>
                     </div>
                 </React.Fragment>)

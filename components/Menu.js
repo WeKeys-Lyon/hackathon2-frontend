@@ -7,7 +7,8 @@ import Link from 'next/link';
 function Menu(props) {
 
     const user = useSelector((state) => state.user.value);
-    const srcAvatar = '/avatars/elon.png';
+    const avatars = ['bardello','elon','goodenough','misterx','poppins','rupaul','sarko','trumpet']
+    const srcAvatar = `/avatars/${avatars[user.avatar]}.png`;
 
     return (<><Link className={styles.link} href="/home">
             <div className={styles.leftcontainer}>

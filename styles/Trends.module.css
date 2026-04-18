@@ -92,3 +92,24 @@
     padding: 10px;
     margin-bottom: 3px;
 }
+
+@media (max-width: 768px) {
+  .maincontainer {
+    grid-template-columns: 1fr;  
+    height: auto;
+  }
+
+  .left {
+    order: 3; 
+  }
+
+  .center {
+    order: 1;
+    height: 100vh;
+    padding-bottom: 200px;
+  }
+
+  .right {
+    order: 2;
+  }
+}

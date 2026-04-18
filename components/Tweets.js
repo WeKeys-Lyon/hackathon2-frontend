@@ -9,15 +9,16 @@ import styles from '../styles/Tweets.module.css';
 import Image from 'next/image';
 
 function Tweets(props) {
-
+    console.log(props)
     const router = useRouter();
     const dispatch = useDispatch();
-    const srcAvatar = '/avatars/elon.png';
     const [counter, setCounter] = useState(props.likes)
     const [trueUsername, setTrueUsername] = useState(props.username.username);
     const [trueFirstname, setTrueFirstname] = useState(props.username.firstname);
     const [trueAvatar, setTrueAvatar] = useState(props.username.avatar);
     const user = useSelector((state) => state.user.value);
+    const avatars = ['bardello','elon','goodenough','misterx','poppins','rupaul','sarko','trumpet']
+    const srcAvatar = `/avatars/${avatars[trueAvatar]}.png`;
 
     useEffect(() => {
         if (!props.username.username){

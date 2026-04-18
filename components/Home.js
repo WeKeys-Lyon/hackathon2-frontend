@@ -31,6 +31,7 @@ function Home() {
         </div>
       </section>
       <section className={styles.right}>
+        <p className={styles.title}>Trends</p>
         <Trends />
       </section>
     </div>

@@ -5,11 +5,15 @@ import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { deleteTweet } from '../reducers/tweets';
 import {delLike, addLike} from '../reducers/user';
 import styles from '../styles/Tweets.module.css';
+import Image from 'next/image';
 
 function Tweets(props) {
     console.log(props)
     const router = useRouter();
     const dispatch = useDispatch();
+    const srcAvatar = '/avatars/elon.png';
+
+
     const formatContent = (text) => {
     return text.split(/(#\w+)/g).map((word, index) => {
     if (word.startsWith('#') && word.length > 1) {
@@ -84,7 +88,15 @@ function Tweets(props) {
     <section className={styles.section}>
         <div className={styles.tweetContainer}>
             <div className={styles.tweetHeader}>
-                <div className={styles.avatar}>{props.username.avatar}</div>
+                <div className={styles.avatar}>
+                    <Image 
+                        src={srcAvatar}
+                        alt="Avatar Picture"
+                        width={30}
+                        height={30}
+                        className={styles.avatar}
+                    />
+                </div>
                 <div className={styles.firstname}>{props.username.firstname}</div>
                 <div className={styles.username}>@{props.username.username}</div>
                 <div className={styles.date}>- {formatDate(props.date)}</div>

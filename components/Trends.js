@@ -24,15 +24,15 @@ function Trends(props) {
             return (<React.Fragment key={i}>
                 <div className={styles.words}>
                     <div onClick={() => handleChangeSlug(cleanHashtag)} className={styles.hashtags}>{trend.hashtags}</div>
-                    <div>{trend.count} Tweet</div>
+                    <div className={styles.trendcount}>{trend.count} Tweet</div>
                     </div>
                 </React.Fragment>)
         } else {
             return (<React.Fragment key={i} >
                 <div className={styles.words}>
                     <div onClick={() => handleChangeSlug(cleanHashtag)} className={styles.hashtags}>{trend.hashtags}</div>
-                    <div>{trend.count} Tweets</div>
-                    </div>
+                    <div className={styles.trendcount}>{trend.count} Tweets</div>
+                 </div>
                 </React.Fragment>)
         }
         } else {
@@ -40,14 +40,14 @@ function Trends(props) {
             return (<React.Fragment key={i}>
                 <div className={styles.words}>
                 <div onClick={() => router.push(`/hashtags/${cleanHashtag}`)} className={styles.hashtags}>{trend.hashtags}</div>
-                <div>{trend.count} Tweet</div>
+                <div className={styles.trendcount}>{trend.count} Tweet</div>
                 </div>
                 </React.Fragment>)
         } else {
             return (<React.Fragment key={i} >
                 <div className={styles.words}>
                     <div onClick={() => router.push(`/hashtags/${cleanHashtag}`)} className={styles.hashtags}>{trend.hashtags}</div>
-                    <div>{trend.count} Tweets</div>
+                    <div className={styles.trendcount}>{trend.count} Tweets</div>
                 </div>
                 </React.Fragment>)
         }

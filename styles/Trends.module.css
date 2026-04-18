@@ -3,7 +3,6 @@
 }
 
 .words {
-  color: white;
   margin: 10px;
   padding: 10px;
 }
@@ -16,6 +15,7 @@
 
 .hashtags:hover {
   cursor: pointer;
+  color: rgb(29, 155, 240);
 }
 
 .trendContainer {
@@ -38,6 +38,10 @@
   line-height: 1.15;
   font-size: 4rem;
   padding-left: 20px;
+}
+
+.trendcount {
+  color:#5d6977;
 }
 
 .title a {

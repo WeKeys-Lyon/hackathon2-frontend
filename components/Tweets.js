@@ -21,7 +21,6 @@ function Tweets(props) {
 
     useEffect(() => {
         if (!props.username.username){
-            console.log('ya pas d\'username');
             setTrueUsername(user.username);
             setTrueFirstname(user.firstname);
             setTrueAvatar(user.avatar);

@@ -21,25 +21,43 @@ function Trends(props) {
         const cleanHashtag = trend.hashtags.slice(1)
         if (window.location.pathname.match(/hashtags/i)) {
             if (trend.count < 2) {
-            return (<React.Fragment key={i}><div onClick={() => handleChangeSlug(cleanHashtag)} className={styles.cleanhashtag}>{trend.hashtags}</div><div>{trend.count} Tweet</div></React.Fragment>)
+            return (<React.Fragment key={i}>
+                <div className={styles.container}>
+                    <div onClick={() => handleChangeSlug(cleanHashtag)} className={styles.cleanhashtag}>{trend.hashtags}</div>
+                    <div>{trend.count} Tweet</div>
+                    </div>
+                </React.Fragment>)
         } else {
-            return (<React.Fragment key={i}><div onClick={() => handleChangeSlug(cleanHashtag)} className={styles.cleanhashtag}>{trend.hashtags}</div><div>{trend.count} Tweets</div></React.Fragment>)
+            return (<React.Fragment key={i} >
+                <div className={styles.container}>
+                    <div onClick={() => handleChangeSlug(cleanHashtag)} className={styles.cleanhashtag}>{trend.hashtags}</div>
+                    <div>{trend.count} Tweets</div>
+                    </div>
+                </React.Fragment>)
         }
         } else {
             if (trend.count < 2) {
             return (<React.Fragment key={i}>
+                <div className={styles.container}>
                 <div onClick={() => router.push(`/hashtags/${cleanHashtag}`)} style={{ cursor: 'pointer'}}>{trend.hashtags}</div>
-                <div>{trend.count} Tweet</div></React.Fragment>)
+                <div>{trend.count} Tweet</div>
+                </div>
+                </React.Fragment>)
         } else {
-            return (<React.Fragment key={i}><div onClick={() => router.push(`/hashtags/${cleanHashtag}`)} style={{ cursor: 'pointer'}}>{trend.hashtags}</div><div>{trend.count} Tweets</div></React.Fragment>)
+            return (<React.Fragment key={i} >
+                <div className={styles.container}>
+                    <div onClick={() => router.push(`/hashtags/${cleanHashtag}`)} style={{ cursor: 'pointer'}}>{trend.hashtags}</div>
+                    <div>{trend.count} Tweets</div>
+                </div>
+                </React.Fragment>)
         }
         }
 
         
     })
-    return (<>
+    return (<div className={styles.trendContainer}>
         {toDraw}
-    </>)
+    </div>)
 
 };
 

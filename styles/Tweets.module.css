@@ -54,8 +54,8 @@
     padding: 10px;
 }
 
+
 .tweetContainer {
-    border-top: solid 1px rgb(87, 89, 105) ;
     margin: 5px;
 }
 
@@ -88,6 +88,11 @@
     font-size:small;
     opacity: 0.8;
     padding: 3px;
+}
+.globaldiv {
+    margin: 3px;
+    border-bottom: solid 1px rgb(87, 89, 105) ;
+    padding-bottom: 5px;
 }
 
 .section {

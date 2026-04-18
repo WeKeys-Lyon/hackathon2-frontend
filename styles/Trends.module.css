@@ -2,12 +2,27 @@
     cursor: 'pointer';
 }
 
-.container {
-  color:blue;
+.words {
+  color: white;
+  margin: 10px;
+  padding: 10px;
+}
+
+.hashtags {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 5px;
+}
+
+.hashtags:hover {
+  cursor: pointer;
 }
 
 .trendContainer {
-  background-color: gray;
+  background-color: #1b232c;
+  border-radius: 20px 0px 0px 20px;
+  margin-right: 0;
+  padding-right: 0;
 }
 
 .main {

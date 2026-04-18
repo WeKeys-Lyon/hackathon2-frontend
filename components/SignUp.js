@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from '../styles/Signup.module.css'
 import { login } from '../reducers/user';
@@ -10,6 +10,7 @@ function SignUp(props) {
     const [signUpFirstname, setSignUpFirstname] = useState('');
 	const [signUpPassword, setSignUpPassword] = useState('');
     const [choosenAvatar, setChoosenAvatar] = useState('');
+    const [styling, setStyling] = useState('')
 
     const avatars = ['bardello','elon','goodenough','misterx','poppins','rupaul','sarko','trumpet']
     
@@ -38,7 +39,11 @@ function SignUp(props) {
         const avatarDraw = avatars.map((avatar,i) => {
             const path = `/avatars/${avatar}.png`
             const alternate = `Avatar choice ${avatar}`
-            return <React.Fragment key={i}>
+            console.log('voici le index ' + i)
+            console.log(choosenAvatar)
+
+                return <React.Fragment key={i}>
+                <div className={(i == choosenAvatar) ? styles.selected : ''}>
                 <Image 
                 src={path}
                 alt={alternate}
@@ -47,6 +52,7 @@ function SignUp(props) {
                 className={styles.avatar}
                 onClick={() => setChoosenAvatar(i)}
                 />
+                </div>
             </React.Fragment>
         })
     return (

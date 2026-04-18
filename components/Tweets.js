@@ -9,7 +9,7 @@ import styles from '../styles/Tweets.module.css';
 import Image from 'next/image';
 
 function Tweets(props) {
-
+    console.log(props)
     const router = useRouter();
     const dispatch = useDispatch();
     const [counter, setCounter] = useState(props.likes)

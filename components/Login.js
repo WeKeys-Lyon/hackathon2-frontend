@@ -11,11 +11,12 @@ import SignIn from './SignIn'
 function Login() {
 	const router = useRouter()
 	const user = useSelector((state) => state.user.value);
-
+console.log(user)
 	const [ModalUp, setModalUp] = useState(false);
 	const [ModalIn, setModalIn] = useState(false);
 
 	useEffect(()=> {
+
 		(user.token && user.username && user.avatar) ? router.push('/home') : ''
 	}, [user])
 

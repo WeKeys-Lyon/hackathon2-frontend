@@ -1,5 +1,5 @@
 import {useRouter} from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +14,19 @@ function Tweets(props) {
     const dispatch = useDispatch();
     const srcAvatar = '/avatars/elon.png';
     const [counter, setCounter] = useState(props.likes)
+    const [trueUsername, setTrueUsername] = useState(props.username.username);
+    const [trueFirstname, setTrueFirstname] = useState(props.username.firstname);
+    const [trueAvatar, setTrueAvatar] = useState(props.username.avatar);
+    const user = useSelector((state) => state.user.value);
 
+    useEffect(() => {
+        if (!props.username.username){
+            console.log('ya pas d\'username');
+            setTrueUsername(user.username);
+            setTrueFirstname(user.firstname);
+            setTrueAvatar(user.avatar);
+        }
+    },[])
 
     const formatContent = (text) => {
     return text.split(/(#\w+)/g).map((word, index) => {
@@ -104,8 +116,8 @@ function Tweets(props) {
                         className={styles.avatar}
                     />
                 </div>
-                <div className={styles.firstname}>{props.username.firstname}</div>
-                <div className={styles.username}>@{props.username.username}</div>
+                <div className={styles.firstname}>{trueFirstname}</div>
+                <div className={styles.username}>@{trueUsername}</div>
                 <div className={styles.date}>- {formatDate(props.date)}</div>
             </div>
         </div>

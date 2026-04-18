@@ -1,13 +1,19 @@
 import { useRouter } from 'next/router'
 import {useEffect, useState} from 'react';
+import styles from '../styles/Trends.module.css';
 import Menu from './Menu';
 import SearchTrend from './SearchTrend';
 import TrendResults from './TrendResults.js';
 import Trends from './Trends';
-import {styles} from '../styles/Home.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { addTweet, eraseAll } from '../reducers/tweets';
 export default function Hashtags() {
+
+    const user = useSelector((state) => state.user.value);
+
+  useEffect(() => {
+    (user.token && user.username && user.avatar) ? '': router.push("/")
+  }, [] )
 
   const [slug, setSlug] = useState(PathParamComponent().props.children[1]);
   const tweets = useSelector((state) => state.tweets.value);
@@ -56,15 +62,24 @@ export default function Hashtags() {
 
   return (
     <>
-      {}
-      <section>PANNEAU DE GAUCHE<Menu /></section>
-      <section>PANNEAU CENTRAL
-        <section>
-          <SearchTrend hashtagName={slug} changeSlug={changeSlug}/>
-        </section>
-        <section>LISTE DES TWEETS<TrendResults tweets={tweets}/></section>
+      <div className={styles.maincontainer}>
+      <section className={styles.left}>
+        <Menu username={user.username} avatar={user.avatar} firstname={user.firstname} />
       </section>
-      <section>PANNEAU DE DROITE<Trends changeSlug={changeSlug}/></section>
+      <section className={styles.center}>
+        <p className={styles.title} >Hashtag</p>
+        <section >
+          <SearchTrend hashtagName={slug} changeSlug={changeSlug} className={styles.search}/>
+        </section>
+        <section>
+          <TrendResults tweets={tweets}/>
+        </section>
+      </section>
+      <section className={styles.right}>
+        <p className={styles.title} >Trends</p>
+        <Trends changeSlug={changeSlug} className={styles.trendsright}/>
+      </section>
+    </div>
     </>
   )
 }

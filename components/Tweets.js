@@ -60,7 +60,8 @@ function Tweets(props) {
 
     const trashbin = <FontAwesomeIcon onClick={() => handleDelete()} style={{cursor: 'pointer'}} icon={faTrash} className={styles.tweetDump} />;
     const heartRed = <FontAwesomeIcon onClick={() => handleLike()} style={{cursor: 'pointer', color: 'red'}} icon={faHeart} className={styles.tweetLike} />;
-    const heart = <FontAwesomeIcon onClick={() => handleLike()} style={{cursor: 'pointer'}} icon={faHeart} className={styles.tweetLike} />
+    const heart = <><FontAwesomeIcon onClick={() => handleLike()} style={{cursor: 'pointer'}} icon={faHeart} className={styles.tweetLike} />
+    <div className={styles.countLikes}>{props.likes}</div></>
 
 
     const formatDate = (date) => {

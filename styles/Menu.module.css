@@ -9,6 +9,10 @@
   align-items: flex-start;
 }
 
+.leftcontainer:hover{
+  cursor: pointer;
+}
+
 .Link a {
   display: inline-block;
   cursor: pointer;
@@ -24,7 +28,6 @@
   position: sticky;
   top: 20px;
 }
-
 
 .bottomcontainer {
   position: fixed;

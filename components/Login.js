@@ -35,8 +35,7 @@ function Login() {
       <section className={styles.imageContainer}>
         <Image 
       src="/background.png"
-	  height={1368}
-	  width={684}
+      layout='fill'
       alt="Dépotoir Tweeter"
       className={styles.background}
 		/>

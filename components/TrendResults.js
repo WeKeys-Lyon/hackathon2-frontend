@@ -17,10 +17,14 @@ function TrendResults(props) {
 
 
     const toDraw = props.tweets.slice().sort((a,b) => moment(a.date).format("x") < moment(b.date).format("x")).map((tweet, i) => {
-        if  (tweet.username._id == user.id || tweet.username == user.id) {
-            return <Tweets key={i} {...tweet} isMine="true"/>
+        if ((user.likes !== null && user.likes !== undefined && user.likes.find(tweetid => tweetid == tweet._id)) && (tweet.username._id == user.id || tweet.username == user.id)) {
+            return <Tweets key={i} {...tweet} isMine={true} user={user} liked={true}/>
+        } else if (tweet.username._id == user.id || tweet.username == user.id) {
+            return <Tweets key={i} {...tweet} isMine={true} user={user}/>
+        } else if (user.likes !== null && user.likes !== undefined && user.likes.find(tweetid => tweetid == tweet._id)){
+            return <Tweets key={i} {...tweet} isMine={false} user={user} liked={true}/>
         } else {
-        return <Tweets key={i} {...tweet}/>
+            return <Tweets key={i} {...tweet} isMine={false} user={user}/>
         }
     })
     return (<>

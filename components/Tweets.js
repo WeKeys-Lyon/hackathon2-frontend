@@ -9,7 +9,7 @@ import styles from '../styles/Tweets.module.css';
 import Image from 'next/image';
 
 function Tweets(props) {
-    console.log(props)
+
     const router = useRouter();
     const dispatch = useDispatch();
     const srcAvatar = '/avatars/elon.png';
@@ -50,7 +50,7 @@ function Tweets(props) {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ tweetId: props._id, token: props.user.token}),
         }).then(response => response.json()).then(async data => {
-            console.log(data);
+            
 
             if (data.result && data.erased) {
                 dispatch(delLike(props._id))
